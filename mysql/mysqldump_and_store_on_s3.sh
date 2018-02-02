@@ -1,3 +1,4 @@
+
 #!/bin/bash -xv
 DATE="$(date +%F_%H%M%S)"
 DB="$(mysql -u<username> -p<password> -h<hostip> -e 'show databases'|egrep -v -e information_schema -e Database -e mysql -e sys -e test -e tmp -e performance_schema -e innodb)"
