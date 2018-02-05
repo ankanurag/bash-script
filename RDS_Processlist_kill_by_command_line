@@ -1,0 +1,5 @@
+#This file contain command that kill processlist on RDS mysql
+#with specific user.
+
+#This command kill all process of specific user.
+for i in $(mysql -u<username> -p<password> -h<hostname> -e "use information_schema; select ID from PROCESSLIST where USER='username'\G;"|grep -w "ID"|awk '{print $2}'); do mysql -u<username> -p<password> -h<hostname> -e "CALL mysql.rds_kill($i)"; done
